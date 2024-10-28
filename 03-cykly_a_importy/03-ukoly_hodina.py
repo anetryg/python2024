@@ -2,19 +2,54 @@
 """ Vytvořte seznam jmen. Za každé jméno chceme přidat pomocí cyklu konec e-mailové adresy (například máme v seznamu jméno "Aneta" a chceme za něj přidat "@gmail.com"). Vypište maily na obrazovku. """
 
 
+seznamjmen = ["katka", "honza","jana"]
+
+for jmeno in seznamjmen:
+    print(jmeno + "@gmail.com")
+
 
 #Úkol 2
 """ Vytvořte seznam školních známek. Následně pomocí cyklu spočítejte počet jedniček. """
+znamky = [1, 2, 4, 5, 1]
+pocet_znamek = 0
 
+for znamka in znamky:
+    if znamka == 1:
+        pocet_znamek += 1
+        
+print(pocet_znamek)
 
 
 #Úkol 3
 """ Vytvořte program, který spočítá součet všech lichých čísel v zadaném seznamu čísel."""
-        
+
+seznam = [1, 2 ,3, 4, 5, 6]
+liche = []
+
+for cislo in seznam:
+    if cislo % 2 != 0:
+        liche.append(cislo)
+    
+print(sum(liche))
+    
+    
 
 
 #Úkol 4
 """ Vytvořte program, který uživateli pomocí cyklu while umožní hádat číslo, které si počítač "myslí" (uložte na začátku libovolné číslo do proměnné). Uživatel hádá, dokud se netrefí. Pak se program ukončí. Rozšiřte program tak, aby uživatel dostával zpětnou vazbu, zda je číslo větší nebo menší"""
+
+moje = 51
+
+while True:
+    uzivatel = int(input("Zadaj číslo od 1-100: "))
+    if moje < uzivatel:
+        print("moc vysoké číslo")
+    elif moje > uzivatel:
+        print("moc nízke číslo")
+    elif moje == uzivatel:
+        print("Je to tak")
+        break
+    
 
 
 
@@ -23,22 +58,39 @@
 
 hesla = [
     "xyz101",
-    "punťa",
+    "punťa!",
     "razor-blade",
     "1234",
     "12011986",
     "martin111",
     "trhnisi",
-    "hokuspokus",
+    "hokuspokus!",
     "jeník15",
     "kristus-te-spasi",
     "beruška",
     "strčprstskrzkrk",
 ]
 
+novy_seznam = []
+
+for bezpecne_hesla in hesla:
+    if len(bezpecne_hesla) > 8:
+        novy_seznam.append(bezpecne_hesla)
+
+print(novy_seznam)
 
 #Úkol 6
 """ Napište cyklus, který projde zadaný seznam celých čísel a najde v něm největší hodnotu. """
+
+seznam_cisel = [56, 23, 100, 2, 59]
+nejvetsi_hodnota = seznam_cisel[0]
+
+for cislo in seznam_cisel:
+    if cislo > nejvetsi_hodnota:
+        nejvetsi_hodnota = cislo
+        
+print(nejvetsi_hodnota)
+
 
 
 
