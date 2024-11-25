@@ -46,7 +46,7 @@ book_1 = {"title": "Pán Prstenů", "author": "J.R.R. Tolkien", "copies_availabl
 book_2 = {"title": "Harry Potter", "author": "J.K. Rowling", "copies_available": 8}
 ```
 
-Nyní můžeme přemýšlet o tom, jak bychom řešili situaci, kdy čtenář chce vypůjčit knihu. Podobně jako v předchozím příkladu, snížíme počet dostupných kopií, ale musíme zkontrolovat, zda čtenář nemůže půjčit více kopií, než kolik jich je k dispozici.
+Nyní můžeme přemýšlet o tom, jak bychom řešili situaci, kdy čtenář chce vypůjčit knihu. Snížíme počet dostupných kopií, ale musíme zkontrolovat, zda si čtenář nemůže půjčit více kopií, než kolik jich je k dispozici.
 
 ```python
 def borrow_book(copies_to_borrow, book):
