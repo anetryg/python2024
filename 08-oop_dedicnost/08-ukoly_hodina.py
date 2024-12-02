@@ -12,7 +12,20 @@ Třída Shape by měla mít následující metody:
 - display_info(self): Metoda pro zobrazení informací o tvaru.
 - calculate_area(self): Metoda pro výpočet obsahu tvaru (metoda s pass, určená k přepsání v odvozených třídách).
 """
-    
+
+class Shape:
+    def __init__(self, color="white", filled=True):
+        self.color = color
+        self.filled = filled
+
+    def display_info(self):
+        if self.filled:
+           return f"Tvar je vyplněný a barva: {self.color}."
+        else:
+            return f"Tvar není vyplněný a barva: {self.color}."
+
+    def calculate_area(self):
+        pass
 
 
 
@@ -28,6 +41,33 @@ Třída Circle by měla mít následující atributy:
 
 Obě třídy by měly přepsat metodu calculate_area pro konkrétní výpočet obsahu pro každý tvar.
 """
+
+class Rectangle(Shape):
+    def __init__(self, length, width, color="white", filled=True):
+        super().__init__(color, filled)
+        self.length = length
+        self.width = width
+
+    def calculate_area(self):
+        return self.length * self.width
+
+class Circle(Shape):
+    def __init__(self, radius, color="white", filled=True):
+        super().__init__(color, filled)
+        self.radius = radius
+
+    def calculate_area(self):
+        return math.pi * (self.radius ** 2)
+
+rectangle = Rectangle(5, 10, color="blue", filled=False)
+circle = Circle(7, color="red")
+
+print(rectangle.display_info())
+print(f"Obsah obdélníka: {rectangle.calculate_area()}")
+
+print(circle.display_info())
+print(f"Obsah kruhu: {circle.calculate_area()}")
+
 
 
 
@@ -46,6 +86,19 @@ Třída ClothingItem by měla mít následující metody:
 - calculate_discounted_price(self, discount_percentage): Metoda pro výpočet slevy na cenu oblečení."""
 
 
+class ClothingItem:
+    def __init__(self, name, size, color, price):
+        self.name = name
+        self.size = size
+        self.color = color
+        self.price = price
+
+    def display_info(self):
+        return f"{self.name} (Velikost: {self.size}, Barva: {self.color}, Cena: {self.price} Kč)"
+
+    def calculate_discounted_price(self, discount_percentage):
+        discounted_price = self.price * (1 - discount_percentage / 100)
+        return round(discounted_price, 2)
 
 
     
@@ -66,7 +119,29 @@ Metody pro třídu Pants:
 
 """
 
+class TShirt(ClothingItem):
+    def __init__(self, name, size, color, price, fabric):
+        super().__init__(name, size, color, price)
+        self.fabric = fabric
+
+    def add_logo(self, logo):
+        print(f"Logo '{logo}' bylo přidáno na tričko {self.name}.")
+
+class Pants(ClothingItem):
+    def __init__(self, name, size, color, price, fit):
+        super().__init__(name, size, color, price)
+        self.fit = fit
+
+    def adjust_length(self, new_length):
+        print(f"Délka kalhot {self.name} byla upravena na {new_length} cm.")
 
         
 
+tshirt = TShirt("Tričko", "L", "černá", 499, "bavlna")
+tshirt.add_logo("Nike")
+print(tshirt.display_info())
+print(f"Cena po slevě: {tshirt.calculate_discounted_price(20)} Kč")
 
+pants = Pants("Džíny", "32", "modrá", 1299, "slim fit")
+pants.adjust_length(90)
+print(pants.display_info())
